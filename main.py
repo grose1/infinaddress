@@ -1,11 +1,12 @@
 import requests
 from requests.structures import CaseInsensitiveDict
-
+import time
 
 
 def main():
     if __name__ == '__main__':
         try:
+            # Sets Cloud Server Addresses
             ip = input('Enter IP Address: ')
 
             url = 'http://{0}/eidc/setoutbound?username=admin&password=admin'.format(ip)
@@ -19,6 +20,14 @@ def main():
 
             print(resp.json())
 
+            # reboot controller
+            time.sleep(5)
+
+            con_reboot = 'http://{0}/eidc/reboot'.format(ip)
+            get_reboot = requests.get(con_reboot)
+            print(get_reboot.json())
+
+            # Repeat
             next = input('repeat?y,n: ')
             if next == 'y':
                 main()
