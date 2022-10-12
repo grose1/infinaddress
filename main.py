@@ -12,6 +12,7 @@ def main():
             url = 'http://{0}/eidc/setoutbound?username=admin&password=admin'.format(ip)
 
             headers = CaseInsensitiveDict()
+            
             headers["Content-Type"] = "application/json"
 
             data = '{"maxRandomRetryInterval":600,"primaryHostAddress":"10.10.10.10","primaryPort":18800,"primarySsl":1,"retryInterval":0,"secondaryHostAddress":"serveraddress.com","secondaryPort":18800,"secondarySsl":1,"siteKey":""}'
